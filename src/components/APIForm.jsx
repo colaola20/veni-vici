@@ -8,11 +8,12 @@ const APIForm = ({breeds, currentBreed, catImg, onBanAttribute}) => {
 
                 {catImg && catImg[0] && (
                 <img 
-                    src={catImg[0].url} 
+                    className="imgBlock" src={catImg[0].url} 
                     alt={currentBreed.name} 
-                    style={{maxWidth: '100%', height: 'auto'}}
+                    style={{maxWidth: '70%', height: 'auto'}}
                 />
                 )}
+                <br></br>
                 <button onClick={() => onBanAttribute('name', currentBreed.name)}>{currentBreed.name}</button>
                 <button onClick={() => onBanAttribute('weight', currentBreed.weight.imperial + " lbs")}>{currentBreed.weight.imperial} lbs</button>
                 <button onClick={() => onBanAttribute('origin', currentBreed.origin)}>{currentBreed.origin}</button>

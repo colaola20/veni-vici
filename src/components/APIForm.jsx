@@ -1,16 +1,22 @@
 import React from 'react';
 
-const APIForm = ({breeds, currentBreed, catImg}) => {
+const APIForm = ({breeds, currentBreed, catImg, onBanAttribute}) => {
     if (currentBreed && catImg) {
         return (
             <div>
-                <h1>Form</h1>
+                <h1>{currentBreed.name}</h1>
 
-                <img src={catImg[0].url} alt="img" style={{maxWidth: '100%', height: 'auto'}}/>
-                <button>{currentBreed.name}</button>
-                <button>{currentBreed.weight.imperial} lbs</button>
-                <button>{currentBreed.origin}</button>
-                <button>{currentBreed.life_span} years</button>
+                {catImg && catImg[0] && (
+                <img 
+                    src={catImg[0].url} 
+                    alt={currentBreed.name} 
+                    style={{maxWidth: '100%', height: 'auto'}}
+                />
+                )}
+                <button onClick={() => onBanAttribute('name', currentBreed.name)}>{currentBreed.name}</button>
+                <button onClick={() => onBanAttribute('weight', currentBreed.weight.imperial + " lbs")}>{currentBreed.weight.imperial} lbs</button>
+                <button onClick={() => onBanAttribute('origin', currentBreed.origin)}>{currentBreed.origin}</button>
+                <button onClick={() => onBanAttribute('lifespan', currentBreed.life_span + " years")}>{currentBreed.life_span} years</button>
             </div>
         );
     }

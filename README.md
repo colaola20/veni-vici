@@ -1,10 +1,10 @@
-# Web Development Project 4 - *Name of App Here*
+# Web Development Project 4 - *Veni Vici*
 
-Submitted by: **Your Name Here**
+Submitted by: Olha Sorych
 
-This web app: **insert description**
+This web app allows users to discover random cat breeds with stunning photos and detailed breed information at the click of a button. They can ban specific attributes like origin or weight to customize your browsing experience. The perfect tool for cat enthusiasts to explore the diverse world of feline breeds.
 
-Time spent: **X** hours spent in total
+Time spent: 5 hours spent in total
 
 ## Required Features
 

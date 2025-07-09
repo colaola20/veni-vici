@@ -1,68 +1,185 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: 'Segoe UI', system-ui, -apple-system, 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  line-height: 1.6;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(135deg, #0f0f23, #1a1a2e, #16213e);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Custom CSS Variables for consistent theming */
+  --primary-gradient: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-primary: rgba(255, 255, 255, 0.9);
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --shadow-dark: rgba(0, 0, 0, 0.3);
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: #4ecdc4;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
 }
+
 a:hover {
-  color: #535bf2;
+  color: #45b7d1;
+  text-shadow: 0 0 8px rgba(78, 205, 196, 0.6);
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--primary-gradient);
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  padding: 0;
   min-width: 320px;
   min-height: 100vh;
+  background: linear-gradient(135deg, #0f0f23, #1a1a2e, #16213e);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #ff5252, #26c6da);
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin: 0.5em 0;
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+}
+
+h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  margin: 0.8em 0 0.5em 0;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  padding: 0.8em 1.5em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  color: var(--text-primary);
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px var(--shadow-dark);
+  position: relative;
+  overflow: hidden;
 }
 
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+button:hover {
+  border-color: #4ecdc4;
+  box-shadow: 0 6px 20px var(--shadow-dark), 0 0 20px rgba(78, 205, 196, 0.3);
+  transform: translateY(-2px);
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid #4ecdc4;
+  outline-offset: 2px;
+}
+
+/* Enhanced light mode for better accessibility (optional) */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background: linear-gradient(135deg, #f0f2f5, #e8ebf0, #dde1e7);
+    --text-primary: #213547;
+    --text-secondary: #4a5568;
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.1);
   }
+  
+  body {
+    background: linear-gradient(135deg, #f0f2f5, #e8ebf0, #dde1e7);
+  }
+  
+  a {
+    color: #2d3748;
+  }
+  
   a:hover {
-    color: #747bff;
+    color: #1a365d;
   }
+  
   button {
-    background-color: #f9f9f9;
+    background: rgba(255, 255, 255, 0.9);
+    color: #2d3748;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
   }
 }
